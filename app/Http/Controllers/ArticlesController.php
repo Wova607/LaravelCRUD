@@ -9,7 +9,8 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        return view('articles.index');
+        $articles = article::all();
+        return view('articles.index', ['articles'=>$articles]);
     }
 
     public function create()
@@ -19,7 +20,28 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
       article::create($request->all());
-      
+
       return redirect()->route('article.index');
+    }
+
+    public function edit($id)
+    {
+        $articleEdit = article::find($id);
+        return view('articles.edit',['article'=>$articleEdit]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $articleEdit= article::find($id);
+        $articleEdit->fill($request->all());
+        $articleEdit->save();
+
+        return redirect()->route('article.index');
+    }
+
+    public function destroy($id)
+    {
+        $articleDelete = article::find($id)->delete();
+        return redirect()->route('article.index');
     }
 }
