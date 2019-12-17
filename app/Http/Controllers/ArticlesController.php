@@ -24,7 +24,7 @@ class ArticlesController extends Controller
         $this->validate($request,[
           'header'=>'required',
           'body'=>'required',
-          'publishe'=>'required',
+          'publish'=>'required'
         ]);
       article::create($request->all());
 
@@ -42,7 +42,7 @@ class ArticlesController extends Controller
         $this->validate($request,[
             'header'=>'required',
             'body'=>'required',
-            'publishe'=>'required',
+            'publish'=>'required'
           ]);
 
         $articleEdit= article::find($id);

@@ -17,16 +17,16 @@
   <div class="form-group">
    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <label for="headerArticle">Header of Article</label>
-    <input type="text" class="form-control" name="header" id="headerArticle" placeholder="The title of my article">
+    <input type="text" class="form-control" name="header" id="headerArticle" placeholder="The title of my article" value="{{old('headet')}}">
   </div>
     
   <div class="form-group">
     <label for="articleText">Text for the Article</label>
-    <textarea class="form-control" id="articleText" rows="3" placeholder="The text of my article" name="body"></textarea>
+    <textarea class="form-control" id="articleText" rows="3" placeholder="The text of my article" name="body">{{old('body')}}</textarea>
   </div>
   <div class="form-group">
     <label for="dateArticle">Date of publication</label>
-    <input type="date" class="form-control" id="dateArticle" name="publish" >
+    <input type="date" class="form-control" id="dateArticle" name="publish" value="{{old('publish')}}">
   </div>
   <br/>
   <div class="text-right">
