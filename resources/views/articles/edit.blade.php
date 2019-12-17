@@ -4,7 +4,13 @@
 <div class="container">
 <h1>Edit Article</h1>
 </br>
-
+@if($errors->any())
+  @foreach($errors->all() as $error)
+<div class="alert alert-danger" role="alert">
+  {{$error}}
+</div>
+  @endforeach
+@endif
 {{ Form::open(['route'=>['article.update' , $article->id], 'method'=>'PUT']) }}
   <div class="form-group">
    <input type="hidden" name="_token" value="{{ csrf_token() }}">

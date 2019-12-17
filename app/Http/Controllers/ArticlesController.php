@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\article;
 
+
 class ArticlesController extends Controller
 {
+    
     public function index()
     {
         $articles = article::all();
@@ -19,6 +21,11 @@ class ArticlesController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request,[
+          'header'=>'required',
+          'body'=>'required',
+          'publishe'=>'required',
+        ]);
       article::create($request->all());
 
       return redirect()->route('article.index');
@@ -32,6 +39,12 @@ class ArticlesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'header'=>'required',
+            'body'=>'required',
+            'publishe'=>'required',
+          ]);
+
         $articleEdit= article::find($id);
         $articleEdit->fill($request->all());
         $articleEdit->save();
